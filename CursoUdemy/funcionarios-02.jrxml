@@ -92,13 +92,18 @@ FROM funcionarios f, empresas e]]>
 			</textField>
 			<textField>
 				<reportElement x="143" y="0" width="143" height="30" uuid="51e4d38e-614a-4f11-99d7-eb131549bab6"/>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{cnpj}]]></textFieldExpression>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<b>CNPJ: </b> "+$F{cnpj}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="286" y="0" width="143" height="30" uuid="4ae05f91-ccb0-43dd-843d-4a9366633ca0"/>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{telefone}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["("+$F{telefone}.substring( 0 ,2 )+")"+ " "+$F{telefone}.substring( 2, 6 )  + "-"+$F{telefone}.substring( 6, 10 )
+
+
+]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="429" y="0" width="143" height="30" uuid="6e6fd58a-13ec-4395-b5a1-8d9be6ebf82e"/>
@@ -182,7 +187,7 @@ FROM funcionarios f, empresas e]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="dd/MM/yyyy">
 				<reportElement style="estilo_cores_alternadas" x="286" y="0" width="143" height="30" uuid="1e9f83f8-8b53-4c94-a7fb-a04826b48ac4">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f24dfc01-a721-49a8-a435-b8ced9342a07"/>
 				</reportElement>
@@ -198,7 +203,7 @@ FROM funcionarios f, empresas e]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{data_nascimento}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="¤ #,##0.00;¤ -#,##0.00">
 				<reportElement style="estilo_cores_alternadas" x="429" y="0" width="143" height="30" uuid="941fcca7-3d5c-4b3a-afc9-94548f7c3a1c">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="11815a8b-073d-444a-99aa-f9566d88a9d5"/>
 				</reportElement>
