@@ -263,10 +263,42 @@ FROM funcionarios f, empresas e]]>
 		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="32" splitType="Stretch"/>
+		<band height="30" splitType="Stretch">
+			<textField pattern="MMM d, yyyy h:mm:ss a">
+				<reportElement x="100" y="0" width="140" height="30" uuid="1c7884c3-e268-46da-9d31-e027822c9961"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="8e3c7989-21a7-4b9a-8fff-c12eca22b7c6"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Relatório criado em:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="372" y="0" width="100" height="30" uuid="4f99825f-de24-49d0-914d-dd4b0c36b7c1"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="472" y="0" width="100" height="30" uuid="9c8633cf-8695-4b86-b7c7-e12633444471"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 	<summary>
-		<band height="41" splitType="Stretch">
+		<band height="40" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="0" width="572" height="40" backcolor="#E3E3E3" uuid="d6c6a9a1-566a-40d3-8851-1ca901de8450"/>
+			</rectangle>
 			<staticText>
 				<reportElement x="160" y="0" width="100" height="40" uuid="63610d83-67b1-441e-8fd7-4d46be0c2518"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
