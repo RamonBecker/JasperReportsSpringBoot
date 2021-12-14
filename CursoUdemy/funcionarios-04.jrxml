@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="funcionarios-04" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9f94f5c3-b597-405a-86d2-e4bbf3010f83">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="funcionarios-04" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isTitleNewPage="true" isSummaryNewPage="true" isSummaryWithPageHeaderAndFooter="true" isFloatColumnFooter="true" uuid="9f94f5c3-b597-405a-86d2-e4bbf3010f83">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySQL Udemy Data Adapter "/>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="570"/>
@@ -65,7 +65,7 @@ FROM funcionarios f, empresas e]]>
 		<property name="com.jaspersoft.studio.field.tree.path" value="empresas"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<variable name="SALARIO_TOTAL_PAGE" class="java.math.BigDecimal" calculation="Sum">
+	<variable name="SALARIO_TOTAL_PAGE" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
 		<variableExpression><![CDATA[$F{salario}]]></variableExpression>
 	</variable>
 	<variable name="SALARIO_MEDIA_PAGE" class="java.math.BigDecimal" resetType="Column" calculation="Average">
@@ -80,8 +80,9 @@ FROM funcionarios f, empresas e]]>
 	<variable name="MAIOR_SALARIO" class="java.math.BigDecimal" resetType="Page" calculation="Highest">
 		<variableExpression><![CDATA[$F{salario}]]></variableExpression>
 	</variable>
-	<variable name="MENOR_SALARIO" class="java.math.BigDecimal" resetType="Page" calculation="Lowest">
+	<variable name="MENOR_SALARIO" class="java.math.BigDecimal" calculation="Lowest">
 		<variableExpression><![CDATA[$F{salario}]]></variableExpression>
+		<initialValueExpression><![CDATA[new BigDecimal(0.00)]]></initialValueExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -302,10 +303,11 @@ FROM funcionarios f, empresas e]]>
 	</pageFooter>
 	<lastPageFooter>
 		<band height="40">
+			<printWhenExpression><![CDATA[$V{MAIOR_SALARIO}!= null && $V{MENOR_SALARIO} != null]]></printWhenExpression>
 			<rectangle>
 				<reportElement mode="Opaque" x="0" y="0" width="572" height="40" backcolor="#FFFFCC" uuid="0ab26008-6dad-46a0-be92-4d52c143b304"/>
 			</rectangle>
-			<textField>
+			<textField pattern="¤ #,##0.00;¤ -#,##0.00" isBlankWhenNull="true">
 				<reportElement x="260" y="0" width="100" height="40" uuid="0ff996d2-697c-4eb2-a070-72aacaa17036"/>
 				<textElement verticalAlignment="Middle">
 					<font size="12"/>
@@ -326,7 +328,7 @@ FROM funcionarios f, empresas e]]>
 				</textElement>
 				<text><![CDATA[Menor salário: ]]></text>
 			</staticText>
-			<textField>
+			<textField pattern="¤ #,##0.00;¤ -#,##0.00">
 				<reportElement x="460" y="0" width="112" height="40" uuid="e20b9fb9-3411-45ab-8fc0-746163aa2ca4"/>
 				<textElement verticalAlignment="Middle">
 					<font size="12"/>
