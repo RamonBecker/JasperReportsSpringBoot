@@ -215,6 +215,13 @@ ORDER BY jaspercurso.funcionarios.nome ASC]]>
 				<reportElement style="estilo_cores_alternadas" x="0" y="0" width="40" height="30" uuid="8d092dd8-6994-4ede-be2c-da2578015250">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ae595cca-f162-44ee-abbc-34dfbe283a22"/>
 				</reportElement>
+				<box>
+					<pen lineColor="#D6D6D6"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10"/>
 				</textElement>
@@ -224,6 +231,13 @@ ORDER BY jaspercurso.funcionarios.nome ASC]]>
 				<reportElement style="estilo_cores_alternadas" x="40" y="0" width="80" height="30" uuid="941d4c35-4a7f-48cb-88fd-549912c0bac7">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="16d05338-ec26-4455-859f-705dd656eab4"/>
 				</reportElement>
+				<box>
+					<pen lineColor="#D6D6D6"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
 				<textElement verticalAlignment="Middle">
 					<font size="10"/>
 				</textElement>
@@ -233,15 +247,29 @@ ORDER BY jaspercurso.funcionarios.nome ASC]]>
 				<reportElement style="estilo_cores_alternadas" x="360" y="0" width="75" height="30" uuid="aa243315-fb41-47af-99a9-6caf0303daa3">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="72b4eed9-9da0-4ede-a238-e9bd169f2095"/>
 				</reportElement>
+				<box>
+					<pen lineColor="#D6D6D6"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
 				<textElement verticalAlignment="Middle">
 					<font size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{salario}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField textAdjust="ScaleFont">
 				<reportElement style="estilo_cores_alternadas" x="120" y="0" width="110" height="30" uuid="4361e726-89e3-480b-acba-7c143bc357ac">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="91aec21e-0a92-4b99-befc-7f5f031a3de7"/>
 				</reportElement>
+				<box>
+					<pen lineColor="#D6D6D6"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
 				<textElement verticalAlignment="Middle">
 					<font size="10"/>
 				</textElement>
@@ -251,6 +279,13 @@ ORDER BY jaspercurso.funcionarios.nome ASC]]>
 				<reportElement style="estilo_cores_alternadas" x="435" y="0" width="65" height="30" uuid="613d5464-961f-4f8d-8af9-8a6a23d583d8">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e1bacbbd-1f8a-4f0f-8596-16e86a102c74"/>
 				</reportElement>
+				<box>
+					<pen lineColor="#D6D6D6"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
 				<textElement verticalAlignment="Middle">
 					<font size="10"/>
 				</textElement>
@@ -258,6 +293,13 @@ ORDER BY jaspercurso.funcionarios.nome ASC]]>
 			</textField>
 			<textField pattern="¤ #,##0.00;¤ -#,##0.00">
 				<reportElement style="estilo_cores_alternadas" x="500" y="0" width="70" height="30" uuid="be70b1a3-00b6-4547-88f3-8b04c0e4a497"/>
+				<box>
+					<pen lineColor="#D6D6D6"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{salario}.add($F{salario}.multiply( $F{bonus}))]]></textFieldExpression>
 			</textField>
@@ -265,6 +307,13 @@ ORDER BY jaspercurso.funcionarios.nome ASC]]>
 				<reportElement style="estilo_cores_alternadas" x="230" y="0" width="50" height="30" uuid="bfc3e431-4718-4d52-baf2-10ef238a4493">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="93a62879-f710-4821-9cb3-0822e4a05ee9"/>
 				</reportElement>
+				<box>
+					<pen lineColor="#D6D6D6"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{nivel}.equals("TREINAMENTO") ? "TR": 
 $F{nivel}.equals("JUNIOR") ? "JR":
@@ -274,6 +323,13 @@ $F{nivel}.equals("SENIOR") ? "SR": "PL" ]]></textFieldExpression>
 				<reportElement style="estilo_cores_alternadas" x="280" y="0" width="80" height="30" uuid="e4b220e9-db26-41ed-b01b-5b8879a43784">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bc2ca4b2-0afe-4620-a72b-914af4e54b62"/>
 				</reportElement>
+				<box>
+					<pen lineColor="#D6D6D6"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[java.time.Period.between($F{data_nascimento}.toLocalDate(), java.time.LocalDate.now()).getYears()]]></textFieldExpression>
 			</textField>
