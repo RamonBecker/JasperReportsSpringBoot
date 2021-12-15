@@ -17,6 +17,9 @@
 		<parameterDescription><![CDATA[Insira um nível válido  ]]></parameterDescription>
 		<defaultValueExpression><![CDATA["JUNIOR"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="UF" class="java.lang.String">
+		<parameterDescription><![CDATA[Insira uma UF]]></parameterDescription>
+	</parameter>
 	<queryString language="SQL">
 		<![CDATA[SELECT jaspercurso.empresas.razao_social,
 	jaspercurso.empresas.cnpj,
@@ -34,8 +37,10 @@ FROM jaspercurso.empresas,
 	INNER JOIN jaspercurso.niveis ON 
 	 jaspercurso.niveis.id_nivel = jaspercurso.funcionarios.id_nivel 
 WHERE 
-	 jaspercurso.funcionarios.salario <> 0   AND
-	 ($P{NIVEL_DESC} IS NULL OR  jaspercurso.niveis.nivel LIKE  $P{NIVEL_DESC} )
+	 jaspercurso.funcionarios.salario <> 0.00 AND
+	  ($P{NIVEL_DESC} IS NULL OR jaspercurso.niveis.nivel LIKE  $P{NIVEL_DESC}  ) AND
+	  ($P{UF} IS NULL OR jaspercurso.enderecos.uf LIKE  $P{UF}  )
+	   
 ORDER BY jaspercurso.funcionarios.nome ASC]]>
 	</queryString>
 	<field name="razao_social" class="java.lang.String">
