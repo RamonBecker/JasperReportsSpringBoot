@@ -270,7 +270,7 @@ $F{nivel}.equals("SENIOR") ? "SENIOR (SR)": "PLENO (PL)"]]></textFieldExpression
 					</piePlot>
 				</pieChart>
 				<barChart>
-					<chart evaluationTime="Group" evaluationGroup="Group1" theme="aegean">
+					<chart isShowLegend="false" evaluationTime="Group" evaluationGroup="Group1" theme="aegean">
 						<reportElement x="280" y="30" width="290" height="180" uuid="c4aa8f3e-af7e-4e53-bdf9-9d114af1bc62"/>
 						<chartTitle>
 							<titleExpression><![CDATA["Gráfico por UF's"]]></titleExpression>

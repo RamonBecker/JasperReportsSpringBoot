@@ -19,7 +19,7 @@
  FROM 
    telefones t, funcionarios f
  WHERE
-    t.id_funcionario =  $P{ID_FUNCIONARIO} ]]>
+    t.id_funcionario =  $P{ID_FUNCIONARIO}]]>
 	</queryString>
 	<field name="numero" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="numero"/>
@@ -49,7 +49,9 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipo_fone}.equals("CEL")? 
+"( "+$F{numero}.substring(0,2) + " )"+ " "+$F{numero}.substring(2,7)+ " - "+ $F{numero}.substring(7, 11) :
+"( "+$F{numero}.substring(0, 2) +" )"+ " "+$F{numero}.substring(2, 6)+ " - "+$F{numero}.substring(6, 10)]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="0" width="90" height="30" uuid="129c0680-69e9-479c-9512-f1dc4e4da815">
@@ -62,7 +64,8 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{tipo_fone}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipo_fone}.equals("CEL") ? "Celular":
+$F{tipo_fone}.equals("RES") ? "Residencial": "Comercial"]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
