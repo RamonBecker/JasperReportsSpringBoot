@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="funcionarios-18" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9f94f5c3-b597-405a-86d2-e4bbf3010f83">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[amFzcGVyY3Vyc28uZW1wcmVzYXMgLDIwLDExMixiNWU1NzRkMi1hYmVlLTRiZTItYmIxNC00Y2Rm
+ZDJmZTRlMDU7amFzcGVyY3Vyc28uZnVuY2lvbmFyaW9zICwxNjUsNDcsNWQ1YTU0MzQtMTJlNy00
+YWUyLTg0YmEtNzdlYWFiMjMzYjMwO2phc3BlcmN1cnNvLmVuZGVyZWNvcyAsMzI2LDIwLDMyMmQz
+OTRhLWFlZjktNDI0Ny1hMWVjLWFkNWZkM2U3Y2MzNTtqYXNwZXJjdXJzby5uaXZlaXMgLDQ3NSwy
+MDUsYWE3YmYxMjEtZjUyOC00YWRiLWIwNTYtZDA1N2IxNmY2Zjg5Ow==]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySQL Udemy Data Adapter "/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="536"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="450"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="335"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="655"/>
+	<style name="estilo_cores_alternadas" mode="Opaque" backcolor="#FFFFFF">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT} % 2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#CCFFFF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT jaspercurso.empresas.razao_social,
+	jaspercurso.empresas.cnpj,
+	jaspercurso.funcionarios.id_funcionario,
+	jaspercurso.funcionarios.nome,
+	jaspercurso.funcionarios.salario,
+	CONCAT( jaspercurso.enderecos.logradouro,', ',jaspercurso.enderecos.numero,' - ',jaspercurso.enderecos.bairro,', ',jaspercurso.enderecos.cidade,'/',jaspercurso.enderecos.uf) AS endereco,
+	jaspercurso.niveis.bonus,
+	jaspercurso.niveis.nivel,
+	jaspercurso.funcionarios.data_nascimento
+FROM jaspercurso.empresas,
+	jaspercurso.funcionarios
+	INNER JOIN jaspercurso.enderecos ON 
+	 jaspercurso.funcionarios.id_endereco = jaspercurso.enderecos.id_endereco 
+	INNER JOIN jaspercurso.niveis ON 
+	 jaspercurso.niveis.id_nivel = jaspercurso.funcionarios.id_nivel 
+WHERE 
+	 jaspercurso.funcionarios.salario <> 0 
+ORDER BY jaspercurso.funcionarios.nome ASC]]>
+	</queryString>
+	<field name="razao_social" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="razao_social"/>
+		<property name="com.jaspersoft.studio.field.label" value="razao_social"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="empresas"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cnpj" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="cnpj"/>
+		<property name="com.jaspersoft.studio.field.label" value="cnpj"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="empresas"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_funcionario" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="id_funcionario"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_funcionario"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="funcionarios"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="funcionarios"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="salario" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="salario"/>
+		<property name="com.jaspersoft.studio.field.label" value="salario"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="funcionarios"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="endereco" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="endereco"/>
+		<property name="com.jaspersoft.studio.field.label" value="endereco"/>
+	</field>
+	<field name="bonus" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="bonus"/>
+		<property name="com.jaspersoft.studio.field.label" value="bonus"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="niveis"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nivel" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nivel"/>
+		<property name="com.jaspersoft.studio.field.label" value="nivel"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="niveis"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="data_nascimento" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="data_nascimento"/>
+		<property name="com.jaspersoft.studio.field.label" value="data_nascimento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="funcionarios"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="SALARIO_TOTAL_PAGE" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{salario}]]></variableExpression>
+	</variable>
+	<variable name="SALARIO_MEDIA_PAGE" class="java.math.BigDecimal" resetType="Column" calculation="Average">
+		<variableExpression><![CDATA[$F{salario}]]></variableExpression>
+	</variable>
+	<variable name="SALARIO_TOTAL_GERAL" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{salario}]]></variableExpression>
+	</variable>
+	<variable name="SALARIO_MEDIA_GERAL" class="java.math.BigDecimal" calculation="Average">
+		<variableExpression><![CDATA[$F{salario}]]></variableExpression>
+	</variable>
+	<variable name="MAIOR_SALARIO" class="java.math.BigDecimal" resetType="Page" calculation="Highest">
+		<variableExpression><![CDATA[$F{salario}]]></variableExpression>
+	</variable>
+	<variable name="MENOR_SALARIO" class="java.math.BigDecimal" calculation="Lowest">
+		<variableExpression><![CDATA[$F{salario}]]></variableExpression>
+		<initialValueExpression><![CDATA[new BigDecimal(0.00)]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="57" splitType="Stretch">
+			<image>
+				<reportElement mode="Opaque" x="0" y="0" width="572" height="57" backcolor="#00D4FF" uuid="b1ad17b1-4f21-484f-9bbc-67cbb924bb43"/>
+				<imageExpression><![CDATA["images/logo-555x50.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="30" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="0" width="572" height="30" backcolor="#E3E3E3" uuid="a8fe8036-094e-4469-a89e-f3c6deed9dc8"/>
+				<graphicElement>
+					<pen lineColor="#E3E3E3"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement x="0" y="0" width="572" height="30" uuid="63bf4d7f-0986-4122-9be8-5a6fdadc1299"/>
+				<box padding="5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{razao_social} + " - "+$F{cnpj}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="40" height="30" forecolor="#FFFFFF" backcolor="#000000" uuid="52b67bf8-0b37-47c9-9684-7c6893abffef">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ae595cca-f162-44ee-abbc-34dfbe283a22"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="40" y="0" width="80" height="30" forecolor="#FFFFFF" backcolor="#000000" uuid="ed6f141a-2438-4878-9333-fd07b1ea80b9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="16d05338-ec26-4455-859f-705dd656eab4"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="360" y="0" width="75" height="30" forecolor="#FFFFFF" backcolor="#000000" uuid="8afb82b0-60c2-499c-8051-5b26ae301f6b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="72b4eed9-9da0-4ede-a238-e9bd169f2095"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Salário	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="120" y="0" width="110" height="30" forecolor="#FFFFFF" backcolor="#000000" uuid="4f1a1d62-7e40-4dcb-a8df-a835fdc753f2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="91aec21e-0a92-4b99-befc-7f5f031a3de7"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Endereço]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="435" y="0" width="65" height="30" forecolor="#FFFFFF" backcolor="#000000" uuid="2261de1d-ebdd-419d-a1cb-1c23042f6cd2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e1bacbbd-1f8a-4f0f-8596-16e86a102c74"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bônus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="500" y="0" width="70" height="30" forecolor="#FFFFFF" backcolor="#000000" uuid="c0f5f50f-84f4-4567-830c-dec29228e831"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Remuneração]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="230" y="0" width="130" height="30" forecolor="#FFFFFF" backcolor="#000000" uuid="cc5e4ab3-6a4a-4cec-beec-427bd75d9957"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nível]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement style="estilo_cores_alternadas" x="0" y="0" width="40" height="30" uuid="8d092dd8-6994-4ede-be2c-da2578015250">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ae595cca-f162-44ee-abbc-34dfbe283a22"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#D6D6D6"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_funcionario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="estilo_cores_alternadas" x="40" y="0" width="80" height="30" uuid="941d4c35-4a7f-48cb-88fd-549912c0bac7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="16d05338-ec26-4455-859f-705dd656eab4"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#D6D6D6"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00;¤ -#,##0.00">
+				<reportElement style="estilo_cores_alternadas" x="360" y="0" width="75" height="30" uuid="aa243315-fb41-47af-99a9-6caf0303daa3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="72b4eed9-9da0-4ede-a238-e9bd169f2095"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#D6D6D6"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salario}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="ScaleFont">
+				<reportElement style="estilo_cores_alternadas" x="120" y="0" width="110" height="30" uuid="4361e726-89e3-480b-acba-7c143bc357ac">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="91aec21e-0a92-4b99-befc-7f5f031a3de7"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#D6D6D6"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{endereco}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.##%">
+				<reportElement style="estilo_cores_alternadas" x="435" y="0" width="65" height="30" uuid="613d5464-961f-4f8d-8af9-8a6a23d583d8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e1bacbbd-1f8a-4f0f-8596-16e86a102c74"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#D6D6D6"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bonus}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00;¤ -#,##0.00">
+				<reportElement style="estilo_cores_alternadas" x="500" y="0" width="70" height="30" uuid="be70b1a3-00b6-4547-88f3-8b04c0e4a497"/>
+				<box>
+					<pen lineColor="#D6D6D6"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{salario}.add($F{salario}.multiply( $F{bonus}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="estilo_cores_alternadas" x="230" y="0" width="130" height="30" uuid="bfc3e431-4718-4d52-baf2-10ef238a4493">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="93a62879-f710-4821-9cb3-0822e4a05ee9"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#D6D6D6"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#D6D6D6"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[org.apache.commons.text.WordUtils.capitalizeFully($F{nivel})]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="44" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="280" height="30" uuid="4f99825f-de24-49d0-914d-dd4b0c36b7c1"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="280" y="0" width="292" height="30" uuid="9c8633cf-8695-4b86-b7c7-e12633444471"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="40">
+			<printWhenExpression><![CDATA[$V{MAIOR_SALARIO}!= null && $V{MENOR_SALARIO} != null]]></printWhenExpression>
+		</band>
+	</lastPageFooter>
+	<summary>
+		<band height="40" splitType="Stretch"/>
+	</summary>
+</jasperReport>
