@@ -12,7 +12,18 @@ public class Main {
 
 		// abrirJrxml("18");
 
-		exportarPDF("18", "C:\\Users\\ramon\\Documents\\GitHub\\JasperReportsSpringBoot\\demo-jdbc\\RelatoriosExportados\\" + "jasper-" + UUID.randomUUID() + ".pdf");
+		//exportarPDF("18", "RelatoriosExportados\\" + "jasper-" + UUID.randomUUID() + ".pdf");
+		abrirPontoJasper("09");
+	}
+
+	private static void abrirPontoJasper(String numero) throws SQLException {
+		Connection connection = JdbcConnection.connection();
+		JasperService service = new JasperService();
+		String path = "relatorios/jasper/funcionarios-" + numero + ".jasper";
+		service.addParams("UF", "RJ");
+		service.abrirPontoJasper(path, connection);
+		connection.close();
+		
 	}
 
 	private static void exportarPDF(String numero, String saida) throws SQLException {
@@ -25,13 +36,9 @@ public class Main {
 	}
 
 	private static void abrirJrxml(String numero) throws SQLException {
-
 		Connection connection = JdbcConnection.connection();
-
 		JasperService service = new JasperService();
 		String path = "relatorios/jrxml/funcionarios-" + numero + ".jrxml";
-		// service.addParams("NIVEL_DESC", "JUNIOR");
-		// service.addParams("UF", "PR");
 		service.abrirJasperViewr(path, connection);
 		connection.close();
 	}
