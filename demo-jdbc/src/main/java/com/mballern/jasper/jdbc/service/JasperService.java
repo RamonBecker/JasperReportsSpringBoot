@@ -1,12 +1,16 @@
 package com.mballern.jasper.jdbc.service;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Connection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -19,7 +23,19 @@ public class JasperService {
 	public void addParams(String key, Object value) {
 		this.params.put(key, value);
 	}
-	
+
+	public void exportarPDF(String jrxml, Connection connection, String saida) {
+		JasperReport report = compilarJrxml(jrxml);
+		try {
+
+			OutputStream out = new FileOutputStream(saida);
+			JasperPrint print = JasperFillManager.fillReport(report, this.params, connection);
+			JasperExportManager.exportReportToPdfStream(print, out);
+		} catch (JRException | FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void abrirJasperViewr(String jrxml, Connection connection) {
 		JasperReport report = compilarJrxml(jrxml);
 		try {
