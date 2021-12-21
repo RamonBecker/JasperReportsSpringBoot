@@ -23,6 +23,23 @@ public class JasperService {
 	public void addParams(String key, Object value) {
 		this.params.put(key, value);
 	}
+	
+	public void abrirJrxmlComSubReport(String arqMaster, String arqSub, Connection connection) {
+		try {
+			JasperReport subReport = compilarJrxml(arqSub);
+			
+			this.params.put("SUB_REPORT_PARAM", subReport);
+			
+			JasperReport masterReport = compilarJrxml(arqMaster);
+			
+			JasperPrint print = JasperFillManager.fillReport(masterReport, this.params, connection);
+			JasperViewer viewer = new JasperViewer(print);
+			viewer.setVisible(true);
+		} catch (JRException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	public void exportarPDF(String jrxml, Connection connection, String saida) {
 		JasperReport report = compilarJrxml(jrxml);
