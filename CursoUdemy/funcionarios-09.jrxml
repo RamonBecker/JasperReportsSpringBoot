@@ -14,11 +14,14 @@
 		</conditionalStyle>
 	</style>
 	<parameter name="NIVEL_DESC" class="java.lang.String">
-		<parameterDescription><![CDATA[Insira um nível válido  ]]></parameterDescription>
+		<parameterDescription><![CDATA[Insira um nível válido]]></parameterDescription>
 		<defaultValueExpression><![CDATA["JUNIOR"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="UF" class="java.lang.String">
 		<parameterDescription><![CDATA[Insira uma UF]]></parameterDescription>
+	</parameter>
+	<parameter name="IMAGEM_DIRETORIO" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
 	</parameter>
 	<queryString language="SQL">
 		<![CDATA[SELECT jaspercurso.empresas.razao_social,
@@ -121,7 +124,7 @@ ORDER BY jaspercurso.funcionarios.nome ASC]]>
 		<band height="57" splitType="Stretch">
 			<image>
 				<reportElement mode="Opaque" x="0" y="0" width="572" height="57" backcolor="#00D4FF" uuid="b1ad17b1-4f21-484f-9bbc-67cbb924bb43"/>
-				<imageExpression><![CDATA["images/logo-555x50.png"]]></imageExpression>
+				<imageExpression><![CDATA[$P{IMAGEM_DIRETORIO}+"images/logo-555x50.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>
