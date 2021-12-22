@@ -14,27 +14,65 @@
 
 </head>
 <body>
-    <h1>Relatórios</h1>
-    <h2>Relatório 01</h2>
-    <a th:href="@{/relatorio/pdf/jr1/(code='01', acao='v')}">Abrir</a>
-    <a th:href="@{/relatorio/pdf/jr1/(code='01', acao='d')}">Download</a>
 
-    <hr>
-
-    <div>
-        <h2>Relatório 09</h2>
-        <form th:action="@{/relatorio/pdf/jr9/09}" method="get">  
-            <select id="nivel" name="nivel">
-                <option value="">Selecione o nível</option>
-                <option th:each="nivel: ${niveis}" th:value="${nivel}" th:text="${nivel}">Selecione o nível</option>
-            </select>
-            <select id="uf" name="uf">
-                <option value="">Selecione o nível</option>
-                <option th:each="uf: ${ufs}" th:value="${uf}" th:text="${uf}">Selecione o nível</option>
-              
-            </select>
-            <button type="submit">Buscar</button>
-        </form>
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" th:href="@{/}">Home</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/reports}">Relatórios</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <br>
+      <div class="container">
+        <div class="card text-center md-5">
+            <div class="card-body">
+            <h2 class="card-title">Relatórios</h2>
+        </div>
     </div>
+    <br>
+
+    <div class="row">
+        <div class="col-sm-7">
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title">Relatório 01</h2>
+              <a th:href="@{/relatorio/pdf/jr1/(code='01', acao='v')}" class="btn btn-primary">Abrir</a>
+              <a th:href="@{/relatorio/pdf/jr1/(code='01', acao='d')}" class="btn btn-dark">Download</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-7">
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title">Relatório 09</h2>
+              <form th:action="@{/relatorio/pdf/jr9/09}" method="get">  
+                <div class="mb-3">                  
+                    <label for="formUf" class="form-label">Estados</label>
+                    <select select id="uf" name="uf" class="form-select" aria-label="Default select example">
+                        <option value="" selected>Selecione o estado</option>
+                        <option th:each="uf: ${ufs}" th:value="${uf}" th:text="${uf}">Selecione o estado</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="formNivel" class="form-label">Nivel</label>
+                    <select  id="nivel" name="nivel" class="form-select" aria-label="Default select example">
+                        <option value="" selected>Selecione o nível</option>
+                        <option th:each="nivel: ${niveis}" th:value="${nivel}" th:text="${nivel}">Selecione o nível</option>
+                    </select>
+                </div>
+              <button type="submit" class="btn btn-primary">Buscar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
 </body>
 </html>
