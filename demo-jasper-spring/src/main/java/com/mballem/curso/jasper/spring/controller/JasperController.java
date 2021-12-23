@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.mballem.curso.jasper.spring.repository.EnderecoRepository;
+import com.mballem.curso.jasper.spring.repository.FuncionarioRepository;
 import com.mballem.curso.jasper.spring.repository.NivelRepository;
 import com.mballem.curso.jasper.spring.service.JasperService;
 
@@ -29,11 +31,30 @@ public class JasperController {
 	@Autowired
 	private EnderecoRepository enderecoRepository;
 
+	@Autowired
+	private FuncionarioRepository funcionarioRepository;
+
 	@GetMapping("/reports")
 	public String abrir() {
 		return "reports";
 	}
 
+	@ModelAttribute("niveis")
+	public List<String> getNiveis() {
+		return nivelRepository.findNiveis();
+	}
+
+	@ModelAttribute("ufs")
+	public List<String> getUfs() {
+		return enderecoRepository.findUfs();
+	}
+
+
+	@GetMapping("/buscar/funcionarios")
+	public ModelAndView buscarFuncionariosPorNome(@RequestParam("nome") String nome) {
+		return new ModelAndView("reports", "funcionarios", funcionarioRepository.findFuncionariosByNome(nome));
+	}
+	
 	@GetMapping("/relatorio/pdf/jr1")
 	public void exibirRelatorio01(@RequestParam("code") String code, @RequestParam("acao") String acao,
 			HttpServletResponse response) throws IOException {
@@ -61,14 +82,18 @@ public class JasperController {
 		response.setHeader("Content-disposition", "inline; filename=relatorio-" + code + ".pdf");
 		response.getOutputStream().write(bytes);
 	}
+	
+	@GetMapping("/relatorio/pdf/jr19/{code}")
+	public void exibirRelatorio19(@PathVariable("code") String code,
+			@RequestParam(name = "idf", required = false) Long id,
+			HttpServletResponse response) throws IOException {
 
-	@ModelAttribute("niveis")
-	public List<String> getNiveis() {
-		return nivelRepository.findNiveis();
+		service.addParams("ID_FUNCIONARIO", id);
+		byte[] bytes = service.exportarPDF(code);
+		response.setContentType(MediaType.APPLICATION_PDF_VALUE);
+		response.setHeader("Content-disposition", "inline; filename=relatorio-" + code + ".pdf");
+		response.getOutputStream().write(bytes);
 	}
 
-	@ModelAttribute("ufs")
-	public List<String> getUfs() {
-		return enderecoRepository.findUfs();
-	}
+
 }

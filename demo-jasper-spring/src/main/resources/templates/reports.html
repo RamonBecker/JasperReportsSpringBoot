@@ -82,6 +82,36 @@
             </div>
           </div>
         </div>
+        <div class="col-sm-7">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">Relatório 19</h2>
+            <form th:action="@{/buscar/funcianarios}" method="get">  
+              <div class="mb-3">                  
+                  <label for="formIdF" class="form-label">Digite o nome do funcionário</label>
+                  <input id="nome" name="nome" class="form-control" type="text" placeholder="Insira o nome do funcionário" aria-label="default input example">
+              </div>
+            <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
+          </div>
+        </div>
+          <table class="table table-hover table-striped ">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Emitir certificado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="f: ${funcionarios}">
+                <td th:text="${f.get('nome')}"></td>
+                <td>
+                  <a th:href="@{/relatorio/pdf/jr19/19/(idf=${f.get('id')})}" class="btn btn-primary">PDF</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 </body>
 </html>
