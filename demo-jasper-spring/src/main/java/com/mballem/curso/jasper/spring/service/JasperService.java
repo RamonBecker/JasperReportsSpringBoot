@@ -3,6 +3,7 @@ package com.mballem.curso.jasper.spring.service;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,6 +20,11 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.export.HtmlExporter;
+import net.sf.jasperreports.engine.export.HtmlResourceHandler;
+import net.sf.jasperreports.export.SimpleExporterInput;
+import net.sf.jasperreports.export.SimpleHtmlExporterOutput;
+import net.sf.jasperreports.j2ee.servlets.ImageServlet;
+import net.sf.jasperreports.web.util.WebHtmlResourceHandler;
 
 @Service
 public class JasperService {
@@ -61,10 +67,22 @@ public class JasperService {
 
 		try {
 			File file = ResourceUtils.getFile(arq);
-		} catch (FileNotFoundException e) {
+			JasperPrint print = JasperFillManager.fillReport(file.getAbsolutePath(), params, connection);
+			htmlExporter = new HtmlExporter();
+			htmlExporter.setExporterInput(new SimpleExporterInput(print));
+
+			SimpleHtmlExporterOutput exporterOutput = new SimpleHtmlExporterOutput(response.getWriter());
+			HtmlResourceHandler resourceHandler = new WebHtmlResourceHandler(
+					request.getContextPath() + "/image/servlet?image={0}");
+			exporterOutput.setImageHandler(resourceHandler);
+			htmlExporter.setExporterOutput(exporterOutput);
+			request.getSession().setAttribute(ImageServlet.DEFAULT_JASPER_PRINT_SESSION_ATTRIBUTE, 
+					print);
+
+		} catch (IOException | JRException e) {
 			e.printStackTrace();
 		}
+		return htmlExporter;
 
-		
 	}
 }

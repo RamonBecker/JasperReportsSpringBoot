@@ -20,6 +20,8 @@ import com.mballem.curso.jasper.spring.repository.FuncionarioRepository;
 import com.mballem.curso.jasper.spring.repository.NivelRepository;
 import com.mballem.curso.jasper.spring.service.JasperService;
 
+import net.sf.jasperreports.engine.JRException;
+
 @Controller
 public class JasperController {
 
@@ -97,15 +99,15 @@ public class JasperController {
 	}
 
 
-	@GetMapping("/relatorio/pdf/jr19/{code}")
+	@GetMapping("/relatorio/html/jr19/{code}")
 	public void exibirRelatorio19Html(@PathVariable("code") String code,
 			@RequestParam(name = "idf", required = false) Long id,
 			HttpServletRequest request,
-			HttpServletResponse response) throws IOException {
+			HttpServletResponse response) throws IOException, JRException {
 
 
 		response.setContentType(MediaType.TEXT_HTML_VALUE);
 		service.addParams("ID_FUNCIONARIO", id);
-		service.exportarHTML(code, request, response);
+		service.exportarHTML(code, request, response).exportReport();
 	}
 }

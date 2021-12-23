@@ -106,7 +106,9 @@
               <tr th:each="f: ${funcionarios}">
                 <td th:text="${f.get('nome')}"></td>
                 <td>
-                  <a th:href="@{/relatorio/pdf/jr19/19(idf=${f.get('id')})}" class="btn btn-primary">PDF</a>
+                  <a th:href="@{/relatorio/pdf/jr19/19(idf=${f.get('id')})}" class="btn btn-danger">PDF</a>
+                  |
+                  <a th:href="@{/relatorio/html/jr19/19(idf=${f.get('id')})}" class="btn btn-primary">HTML</a>
                 </td>
               </tr>
             </tbody>
