@@ -19,7 +19,7 @@
     jaspercurso.cargos.titulo,
     jaspercurso.enderecos.uf,
       jaspercurso.enderecos.cidade,
-      CONCAT("http://starreports.com.br/certificados?cid=", jaspercurso.funcionarios.id_funcionario) as qrcode
+      CONCAT("http://10.0.0.105:8080/certificados?cid=", jaspercurso.funcionarios.id_funcionario) as qrcode
   FROM 
  jaspercurso.empresas,
   jaspercurso.funcionarios
