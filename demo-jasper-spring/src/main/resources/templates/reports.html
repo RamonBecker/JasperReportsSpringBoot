@@ -86,7 +86,7 @@
         <div class="card">
           <div class="card-body">
             <h2 class="card-title">Relatório 19</h2>
-            <form th:action="@{/buscar/funcianarios}" method="get">  
+            <form th:action="@{/buscar/funcionarios}" method="get">  
               <div class="mb-3">                  
                   <label for="formIdF" class="form-label">Digite o nome do funcionário</label>
                   <input id="nome" name="nome" class="form-control" type="text" placeholder="Insira o nome do funcionário" aria-label="default input example">
@@ -106,7 +106,7 @@
               <tr th:each="f: ${funcionarios}">
                 <td th:text="${f.get('nome')}"></td>
                 <td>
-                  <a th:href="@{/relatorio/pdf/jr19/19/(idf=${f.get('id')})}" class="btn btn-primary">PDF</a>
+                  <a th:href="@{/relatorio/pdf/jr19/19(idf=${f.get('id')})}" class="btn btn-primary">PDF</a>
                 </td>
               </tr>
             </tbody>

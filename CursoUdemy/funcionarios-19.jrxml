@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="funcionarios-19" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d9a56a3d-8571-49b4-825d-9c594b0c49c6">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="funcionarios-19" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d9a56a3d-8571-49b4-825d-9c594b0c49c6">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySQL Udemy Data Adapter "/>
+	<parameter name="IMAGEM_DIRETORIO" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ID_FUNCIONARIO" class="java.lang.Long" isForPrompting="false"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT jaspercurso.empresas.razao_social,
  jaspercurso.empresas.cnpj,
@@ -27,7 +31,9 @@
    jaspercurso.funcionarios.id_nivel = jaspercurso.niveis.id_nivel
   WHERE  jaspercurso.funcionarios.data_demissao is not null
   AND  
-     jaspercurso.funcionarios.id_nivel = 1]]>
+     jaspercurso.funcionarios.id_nivel = 1
+   AND 
+   jaspercurso.funcionarios.id_funcionario =  $P{ID_FUNCIONARIO} ]]>
 	</queryString>
 	<field name="razao_social" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="razao_social"/>
@@ -94,7 +100,7 @@
 		<band height="555" splitType="Stretch">
 			<image>
 				<reportElement x="0" y="0" width="802" height="555" uuid="4d950003-39d6-42b1-b5d2-943f2d6af364"/>
-				<imageExpression><![CDATA["images/background.png"]]></imageExpression>
+				<imageExpression><![CDATA[$P{IMAGEM_DIRETORIO}+"images/background.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement mode="Opaque" x="0" y="60" width="802" height="50" uuid="e3cab93f-af50-43ef-a594-404667e38dcd"/>
@@ -128,8 +134,7 @@
 				<textElement textAlignment="Justified" verticalAlignment="Middle" markup="html">
 					<font size="18"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Pela conclusão do programa de treinamento na empresa "+$F{razao_social}+ ", iniciado em <b>" + new SimpleDateFormat("dd/MM/yyyy").format($F{data_admissao})+ "</b> e finalizado em <b>" +new SimpleDateFormat("dd/MM/yyyy").format($F{data_demissao})+ "</b>, na sede da empresa localizada em <br>"+ $F{cidade}+"/"+$F{uf}+"</b> ocupando a posição de <b>"+$F{titulo}+"</b> com muito empenho e dedicação."
-]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Pela conclusão do programa de treinamento na empresa "+$F{razao_social}+ ", iniciado em <b>" + new SimpleDateFormat("dd/MM/yyyy").format($F{data_admissao})+ "</b> e finalizado em <b>" +new SimpleDateFormat("dd/MM/yyyy").format($F{data_demissao})+ "</b>, na sede da empresa localizada em <br>"+ $F{cidade}+"/"+$F{uf}+"</b> ocupando a posição de <b>"+$F{titulo}+"</b> com muito empenho e dedicação."]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="140" y="470" width="488" height="30" uuid="c15ca0be-1793-407c-9afe-d90e5437bf09"/>
@@ -160,4 +165,15 @@
 			</componentElement>
 		</band>
 	</detail>
+	<noData>
+		<band height="51">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="51" backcolor="#FA7F7D" uuid="813f1256-1832-4f95-9e0f-c7b613864da3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Certificado inexistente]]></text>
+			</staticText>
+		</band>
+	</noData>
 </jasperReport>

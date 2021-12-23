@@ -7,6 +7,9 @@ import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
@@ -15,6 +18,7 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.export.HtmlExporter;
 
 @Service
 public class JasperService {
@@ -49,5 +53,18 @@ public class JasperService {
 		}
 
 		return bytes;
+	}
+
+	public HtmlExporter exportarHTML(String code, HttpServletRequest request, HttpServletResponse response) {
+		HtmlExporter htmlExporter = null;
+		String arq = JASPER_DIRETORIO.concat(JASPER_PREFIXO).concat(code).concat(JASPER_SULFIXO);
+
+		try {
+			File file = ResourceUtils.getFile(arq);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		
 	}
 }

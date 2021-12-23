@@ -3,6 +3,7 @@ package com.mballem.curso.jasper.spring.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,4 +97,15 @@ public class JasperController {
 	}
 
 
+	@GetMapping("/relatorio/pdf/jr19/{code}")
+	public void exibirRelatorio19Html(@PathVariable("code") String code,
+			@RequestParam(name = "idf", required = false) Long id,
+			HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+
+
+		response.setContentType(MediaType.TEXT_HTML_VALUE);
+		service.addParams("ID_FUNCIONARIO", id);
+		service.exportarHTML(code, request, response);
+	}
 }
