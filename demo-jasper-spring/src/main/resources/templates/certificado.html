@@ -30,12 +30,11 @@
       </nav>
       <br>
       <div class="container">
-        <div class="card text-center md-5">
-            <div class="card-body">
-            <h2 class="card-title">Bem vindo ao curso!!!</h2>
-            <p class="card-text">Relatórios com Jasper Reports e Spring </p>
-            <a th:href="@{/reports}" class="btn btn-primary">Ir para relatórios</a>
-            </div>
+        <div class="card text-center text-white bg-success">
+          <div class="card-body">
+            <h5 class="card-title">Validação de certificado</h5>
+            <p  th:text="${mensagem}" class="card-text"></p>
+          </div>
         </div>
     </div>
 </body>

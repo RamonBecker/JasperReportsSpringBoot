@@ -36,6 +36,6 @@ public class HomeController {
 		Funcionario funcionario = funcionarioRepository.findById(cid).get();
 		model.addAttribute("mensagem", "Confirmamos a veracidade deste certificado, pertencente a "+funcionario.getNome()
 				+" emitido em "+funcionario.getDataDemissao());
-		return "index";
+		return "certificado";
 	}
 }

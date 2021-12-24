@@ -19,7 +19,7 @@
     jaspercurso.cargos.titulo,
     jaspercurso.enderecos.uf,
       jaspercurso.enderecos.cidade,
-      CONCAT("http://10.0.0.105:8080/certificados?cid=", jaspercurso.funcionarios.id_funcionario) as qrcode
+      CONCAT("http://192.168.0.104:8080/certificados?cid=", jaspercurso.funcionarios.id_funcionario) as qrcode
   FROM 
  jaspercurso.empresas,
   jaspercurso.funcionarios
@@ -33,7 +33,7 @@
   AND  
      jaspercurso.funcionarios.id_nivel = 1
    AND 
-   jaspercurso.funcionarios.id_funcionario =  $P{ID_FUNCIONARIO} ]]>
+   jaspercurso.funcionarios.id_funcionario =  $P{ID_FUNCIONARIO}]]>
 	</queryString>
 	<field name="razao_social" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="razao_social"/>
