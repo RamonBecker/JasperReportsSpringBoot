@@ -13,7 +13,7 @@ Reporting project developed with Spring Boot, Jasper Reports and MYSQL. Was deve
 - Mathematical calculations were developed in the reports, such as: values and averages of employees and their respective salaries.
 
 ## ⚠️ Prerequisite
-[![Java Badge](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)](https://www.oracle.com/br/java/technologies/javase-downloads.html) >= 8 
+[![Java Badge](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)](https://www.oracle.com/br/java/technologies/javase-downloads.html) >= 11 
 
 ![Spring Badge](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
 
